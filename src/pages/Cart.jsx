@@ -89,7 +89,7 @@ email={userInfo.email}
 </div>
 <ToastContainer
 position="top-left"
-autoClose={3000}
+autoClose={8000}
 hideProgressBar={false}
 newestOnTop={false}
 closeOnClick

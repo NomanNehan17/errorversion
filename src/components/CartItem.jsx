@@ -3,12 +3,15 @@ import { MdOutlineClose } from 'react-icons/md';
 import { Link } from "react-router-dom";
 import { HiOutlineArrowLeft } from 'react-icons/hi';
 import { useDispatch, useSelector } from 'react-redux';
-import {deleteItem, resetCart} from "../redux/bazarSlice"
+import {deleteItem, resetCart  } from "../redux/bazarSlice";
+import {increamentQuantity, decrementQuantity  } from "../redux/bazarSlice";
 import { ToastContainer, toast } from 'react-toastify';
 
 const CartItem = () => {
   const dispatch = useDispatch()
   const productData = useSelector((state) => state.bazar.productData);
+
+
 
   return (
     <div className="w-2/3 pr-10">
@@ -23,14 +26,16 @@ const CartItem = () => {
             className="flex items-center justify-between gap-6 mt-6"
             >
               <div className="flex items-center gap-2">
-              <MdOutlineClose onClick={()=>dispatch(deleItem(item._id))
+              <MdOutlineClose onClick={()=>dispatch(deleteItem(item._id))
               & toast.error(`${item.title} is removed`)
             }
               className="text-xl text-gray-600 hover:text-red-600
               cursor-pointer duration-300"/>
-              <img
-              className="w-32 h-32 object-cover"
-              src="{item.image}" alt="productImg" />
+               <img
+                className="w-32 h-32 object-cover"
+                src={item.image} 
+                alt="productImg"
+              />
                 </div>
                 <h2 className="w-52">{item.title}</h2>
                 <p className="w-10">${item.price}</p>
@@ -104,17 +109,17 @@ const CartItem = () => {
       </Link>
 
       <ToastContainer
-position="top-left"
-autoClose={3000}
-hideProgressBar={false}
-newestOnTop={false}
-closeOnClick
-rtl ={false}
-pauseOnFocusLoss
-draggable
-pauseOnHover
-theme="dark"
-/>
+             position="top-left"
+             autoClose={3000}
+             hideProgressBar={false}
+             newestOnTop={false}
+             closeOnClick
+            rtl ={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="dark"
+            />
     </div>
   );
 };

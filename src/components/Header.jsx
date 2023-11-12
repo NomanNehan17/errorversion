@@ -1,10 +1,11 @@
 import React from 'react';
-import { logoDark } from "../assets/index";
+import { logoDark, deliverylogo } from "../assets/index";
 import { Link } from 'react-router-dom'; // Import Link from react-router-dom
-import {cart} from "../assets/index";
+import {Link as ScrollLink, animateScroll as scroll} from 'react-scroll'; // Import animateScroll from react-scroll
+import {cart,  Blogicon } from "../assets/index";
 import { useSelector } from "react-redux";
 import { ToastContainer , toast} from "react-toastify";
-
+import "react-toastify/dist/ReactToastify.css";
 const Header = () => {
 
   const productData = useSelector((state) => state.bazar.productData);
@@ -25,38 +26,58 @@ console.log(userInfo);
           <li className="text-base text-black font-bold  hover:text-orange-900
           hover:underline underline-offset-2 decoration-[1px] cursor-pointer
           duration-300">
-            Home
+            <Link to={"/"}>Home</Link>
+            
             </li>
+             
+           
 
-            <li className="text-base text-black font-bold  hover:text-orange-900
-          hover:underline underline-offset-2 decoration-[1px] cursor-pointer
-          duration-300">
-            Pages
-            </li>
-
-            <li className="text-base text-black font-bold  hover:text-orange-900
-          hover:underline underline-offset-2 decoration-[1px] cursor-pointer
-          duration-300">
-            Favourites
-            </li>
-
-            <li className="text-base text-black font-bold  hover:text-orange-900
-          hover:underline underline-offset-2 decoration-[1px] cursor-pointer
-          duration-300">
+               <Link to="/favourites">
+               <li className="text-base text-black font-bold hover:text-orange-900 
+                   hover:underline underline-offset-2 decoration-[1px] 
+                    cursor-pointer duration-300">
+                    Favourites
+                      </li>
+                          </Link>
+              
+          <ScrollLink to="shop" smooth={true} duration={500}>
+          <li className="text-base text-black font-bold hover:text-orange-900
+            hover:underline underline-offset-2 decoration-[1px] cursor-pointer
+            duration-300">
             Shop
-            </li>
-
-            <li className="text-base text-black font-bold  hover:text-orange-900
-          hover:underline underline-offset-2 decoration-[1px] cursor-pointer
-          duration-300">
-            Element
           </li>
+        </ScrollLink>
+            
+            <ScrollLink to="footer" smooth={true} duration={500}>
+              <li className="text-base text-black font-bold  hover:text-orange-900
+              hover:underline underline-offset-2 decoration-[1px] cursor-pointer
+              duration-300">
+                Contact Us
+              </li>
+            </ScrollLink>
+            
+            <Link to="/blog">
+           <li className="text-base text-black font-bold group hover:text-orange-900
+           hover:underline underline-offset-2 decoration-[1px] cursor-pointer
+         duration-300 flex items-center">
+        <img src={Blogicon} alt="BlogIcon" className="w-8 h-8 mr-2 group-hover:w-10 group-hover:h-10 
+        transition-all" />
+   
+          </li>
+           </Link>
 
-          <li className="text-base text-black font-bold  hover:text-orange-900
-          hover:underline underline-offset-2 decoration-[1px] cursor-pointer
-          duration-300">
-            Blog
-            </li>
+
+
+            <Link to="/free-delivery">
+              <li className="text-base text-black font-bold hover:text-orange-900 hover:underline underline-offset-2 decoration-[1px] cursor-pointer duration-300">
+                <img
+                  className="w-12 h-12 mx-2 transition-transform transform hover:scale-110"
+                  src={deliverylogo}
+                  alt="deliveryLogo"
+                />
+              </li>
+            </Link>
+
         </ul>
        <Link to="/cart ">
        <div className="relative">

@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import{
   persistStore,
-  persistReducer,
+  //persistReducer,
   FLUSH,
   REHYDRATE,
   PAUSE,
@@ -11,13 +11,18 @@ import{
 } from "redux-persist";
 import bazarRedcuer from "./bazarSlice";
 import storage from "redux-persist/lib/storage";
-import Reducer from "./reducers";
+//import Reducer from "./reducers";
+
+
+
 import persistReducer from "redux-persist/es/persistReducer";
 const persistConfig ={
   key: "root",
   version : 1,
   storage,
 };
+
+
 
 const persistedReducer = persistReducer(persistConfig, bazarRedcuer);
 
